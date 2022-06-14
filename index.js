@@ -167,7 +167,7 @@ submitDoodlesButton.addEventListener('click',()=>{
     }
     if(doodle0.result.label == passdoodles[0] && doodle1.result.label == passdoodles[1] && doodle2.result.label == passdoodles[2]){
         loginResults.innerHTML = `You will now be given access`
-        window.location.href = "/myapp";
+        window.location.href = "/kidsAuth/myapp";
     }
     else{
         loginResults.innerHTML = `Try again`
