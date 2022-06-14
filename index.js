@@ -72,16 +72,12 @@ class doodleChalenge{
     #reposition(event) {
 
         const rect = this.#canvas.getBoundingClientRect();
-//   return {
-//     x: e.clientX - rect.left,
-//     y: e.clientY - rect.top,
-//   };
+
 
         this.#coord.x = event.clientX - rect.left ;
         this.#coord.y = event.clientY - rect.top;
 
-        // this.#coord.x = event.clientX - this.#canvas.offsetLeft;
-        // this.#coord.y = event.clientY - this.#canvas.offsetTop;
+
     }
 
     #start(event) {
