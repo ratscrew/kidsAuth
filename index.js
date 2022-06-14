@@ -205,9 +205,9 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.play();
         console.log(faceapi.nets)
-        await faceapi.nets.ssdMobilenetv1.loadFromUri('/weights')
-        await faceapi.nets.faceLandmark68Net.loadFromUri('/weights')
-        await faceapi.nets.faceRecognitionNet.loadFromUri('/weights')
+        await faceapi.nets.ssdMobilenetv1.loadFromUri('/kidsAuth/weights')
+        await faceapi.nets.faceLandmark68Net.loadFromUri('/kidsAuth/weights')
+        await faceapi.nets.faceRecognitionNet.loadFromUri('/kidsAuth/weights')
         //await faceapi.loadFaceLandmarkModel('/weights')
         //await faceapi.loadFaceRecognitionModel('/weights')
         checkForFace()
