@@ -103,7 +103,7 @@ class doodleChalenge{
     }
 
     #draw(event) {
-        
+        event.preventDefault();
         this.#ctx.beginPath();
         this.#ctx.lineWidth = 16;
         this.#ctx.lineCap = "round";
