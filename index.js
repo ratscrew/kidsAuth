@@ -248,7 +248,7 @@ async function checkForFace(){
     .withFaceDescriptor()
 
     if(detection){
-        faceResult.innerHTML = `Welcome Aidan Grace, please draw your three doodle passcode.`
+        faceResult.innerHTML = `Welcome Aidan Grace, please draw your three unique doodles.`
         allFace.hidden = true;
         alldoodles.hidden = false
         videoState.innerHTML = ``
