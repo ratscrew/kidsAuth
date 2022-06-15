@@ -61,6 +61,7 @@ class doodleChalenge{
         if(r[0].confidence > .3){
             this.result = r[0]
             this.#label.innerHTML = `Label: ${this.result.label} ${this.result.confidence}`;
+            this.#canvas.classList.add('labeled');
         } 
         else {
             this.result = {
@@ -68,6 +69,7 @@ class doodleChalenge{
                 confidence:null
             }
             this.#label.innerHTML = `unknown doodle`;
+            this.#canvas.classList.remove('labeled');
         } 
     }
 
@@ -212,9 +214,11 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.play();
         console.log(faceapi.nets)
-        await faceapi.nets.ssdMobilenetv1.loadFromUri('/kidsAuth/weights')
-        await faceapi.nets.faceLandmark68Net.loadFromUri('/kidsAuth/weights')
-        await faceapi.nets.faceRecognitionNet.loadFromUri('/kidsAuth/weights')
+        await Promise.all([
+            faceapi.nets.ssdMobilenetv1.loadFromUri('/kidsAuth/weights'), 
+            faceapi.nets.faceLandmark68Net.loadFromUri('/kidsAuth/weights'),
+            faceapi.nets.faceRecognitionNet.loadFromUri('/kidsAuth/weights')
+        ])
         //await faceapi.loadFaceLandmarkModel('/weights')
         //await faceapi.loadFaceRecognitionModel('/weights')
         checkForFace()
