@@ -34,6 +34,8 @@ class doodleChalenge{
 
         this.#canvas.addEventListener("mousedown",(ev) => this.#start(ev));
         this.#canvas.addEventListener("mouseup", (ev) => this.#stop(ev));
+        this.#canvas.addEventListener("touchstart",(ev) => this.#start(ev));
+        this.#canvas.addEventListener("touchend", (ev) => this.#stop(ev));
 
         this.#clearButton.addEventListener('click',(ev) => this.clear(ev))
 
@@ -82,14 +84,19 @@ class doodleChalenge{
 
     #start(event) {
         //console.log(event)
+        if(this.#drawfx) this.#canvas.removeEventListener("mousemove", this.#drawfx);
+        if(this.#drawfx) this.#canvas.removeEventListener("touchmove", this.#drawfx);
         this.#drawfx = (ev)=> this.#draw(ev) 
         this.#canvas.addEventListener("mousemove", this.#drawfx);
+        this.#canvas.addEventListener("touchmove", this.#drawfx);
         this.#reposition(event);
         this.#draw(event)
     }
 
     #stop(event) {
         this.#canvas.removeEventListener("mousemove", this.#drawfx);
+        this.#canvas.removeEventListener("touchmove", this.#drawfx);
+        this.#drawfx = null;
         this.#submit()
     }
 
