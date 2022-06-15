@@ -13,12 +13,12 @@
             background-color: #009aff;
         }
         canvas{
-            border: 8px solid gray;
-            border-radius: 8px;
+            border: 8px solid #bdbcbc;
+            border-radius: 16px;
         }
 
         canvas.labeled {
-            border: #47b356;
+            border-color: #47b356;
         }
 
         #doodles, #submitdiv, #videoDiv{
@@ -35,6 +35,12 @@
 
         h1, h3 {
             text-align: center;;
+        }
+
+        .clearButton {
+            margin-left: -87px;
+            margin-bottom: -242px;
+            align-self: end;
         }
     </style>
     
@@ -61,21 +67,21 @@
         <div id="doodles" >
             <div>
                 <canvas id="canvas0" width="280" height="280"></canvas>
-                <button id="clear0" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
+                <button id="clear0" class="clearButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
                 <p id="label0">one</p> 
                 <button id="random0" hidden >suggest a doodle</button>
                 <p id="suggest0"></p> 
             </div>
             <div>
                 <canvas id="canvas1"  width="280" height="280"></canvas>
-                <button id="clear1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
+                <button id="clear1" class="clearButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
                 <p id="label1">two</p>
                 <button id="random1" hidden >suggest a doodle</button>
                 <p id="suggest1"></p> 
             </div>
             <div>
                 <canvas id="canvas2"  width="280" height="280"></canvas>
-                <button id="clear2" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
+                <button id="clear2" class="clearButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >clear</button>
                 <p id="label2">three</p>
                 <button id="random2" hidden >suggest a doodle</button>
                 <p id="suggest2"></p> 
