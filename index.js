@@ -166,6 +166,7 @@ let doodle2 = new doodleChalenge(canvas2,clearButton2,label2, randomButton2, ran
 let tries = 0;
 const submitDoodlesButton = document.getElementById("submitDoodles")
 const loginResults = document.getElementById("loginResults")
+
 submitDoodlesButton.addEventListener('click',()=>{
 
     tries++;
@@ -204,8 +205,9 @@ saveDoodlesButton.addEventListener('click',()=>{
 })
 
 
-var video = document.getElementById('video');
-
+const video = document.getElementById('video');
+const videoState = document.getElementById("videoState")
+videoState.innerHTML = `Loading...`
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Not adding `{ audio: true }` since we only want video now
@@ -214,11 +216,14 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.play();
         console.log(faceapi.nets)
+        videoState.innerHTML = `Loading Face AI...`
         await Promise.all([
             faceapi.nets.ssdMobilenetv1.loadFromUri('/kidsAuth/weights'), 
             faceapi.nets.faceLandmark68Net.loadFromUri('/kidsAuth/weights'),
             faceapi.nets.faceRecognitionNet.loadFromUri('/kidsAuth/weights')
         ])
+
+        videoState.innerHTML = `Looking For a Face...`
         //await faceapi.loadFaceLandmarkModel('/weights')
         //await faceapi.loadFaceRecognitionModel('/weights')
         checkForFace()
@@ -246,6 +251,7 @@ async function checkForFace(){
         faceResult.innerHTML = `Welcome Aidan Grace, please draw your three doodle passcode.`
         allFace.hidden = true;
         alldoodles.hidden = false
+        videoState.innerHTML = ``
     }
     else {
         faceResult.innerHTML = `Please look into the camera so we know who you are.`
