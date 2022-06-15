@@ -75,7 +75,7 @@ class doodleChalenge{
 
         const rect = this.#canvas.getBoundingClientRect();
 
-
+        if(event.touches && event.touches[0]) event = event.touches[0];
         this.#coord.x = event.clientX - rect.left ;
         this.#coord.y = event.clientY - rect.top;
 
